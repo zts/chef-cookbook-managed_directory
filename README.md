@@ -64,6 +64,12 @@ Caveats
    thing if this assumption is not true for the contents of your
    directory.
 
+ * Files managed by resources created after this LWRP is converged
+   (eg, from within a `ruby_block` or LWRP later in the run list) will
+   be incorrectly identified as "unmanaged", and then deleted.  They
+   will be recreated later in the run, but this creates a window where
+   the file is missing.
+
 
 License and Author
 ==================
