@@ -1,3 +1,4 @@
+name		 "managed_directory"
 maintainer       "Zachary Stevens"
 maintainer_email "zts@cryptocracy.com"
 license          "Apache 2.0"
