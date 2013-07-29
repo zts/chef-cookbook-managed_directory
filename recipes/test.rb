@@ -2,7 +2,7 @@
 # Cookbook Name:: managed_directory
 # Recipe:: test
 #
-# A simple demonstration of managed_directory.
+# A simple demonstration of managed_directory, also used by chefspec.
 
 testdir = "/tmp/foo"
 
@@ -12,10 +12,10 @@ directory testdir do
   action :nothing
 end.run_action(:create)
 
-# 2. Put some files in it, without using Chef (during compile phase).
-%w{a b c}.each do |f|
-  ::File.new("#{testdir}/#{f}", "w+")
-end
+# # 2. Put some files in it, without using Chef, before convergence
+# %w{a b c}.each do |f|
+#   ::File.new("#{testdir}/#{f}", "w+")
+# end
 
 # Create a File resource for 'a'
 file "#{testdir}/a" do
