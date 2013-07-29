@@ -25,7 +25,7 @@ action :clean do
   # contained by the managed_directory.  This depends on the resource's
   # name attribute containing the full path to the file.
   managed_files = run_context.resource_collection.all_resources.map { |r|
-    r.name if r.name.start_with?("#{new_resource.path}/")
+    r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
   }.compact
 
   # Remove any contents that appear to be unmanaged.
