@@ -2,7 +2,7 @@ require 'chefspec'
 
 describe 'the test recipe example' do
   let(:chef_run) {
-    runner = ChefSpec::ChefRunner.new(:step_into => ['managed_directory'])
+    runner = ChefSpec::Runner.new(:step_into => ['managed_directory'])
     runner.converge 'managed_directory::test'
   }
   before(:each) {

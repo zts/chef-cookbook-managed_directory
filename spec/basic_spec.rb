@@ -2,7 +2,7 @@ require 'chefspec'
 
 describe 'file a followed by managed_directory' do
   let(:chef_run) {
-    runner = ChefSpec::ChefRunner.new(:step_into => ['managed_directory'])
+    runner = ChefSpec::Runner.new(:step_into => ['managed_directory'])
     runner.converge 'managed_directory::t_basic'
   }
   before(:each) {
@@ -47,7 +47,7 @@ end
 
 describe 'managed_directory followed by file a' do
   let(:chef_run) {
-    runner = ChefSpec::ChefRunner.new(:step_into => ['managed_directory'])
+    runner = ChefSpec::Runner.new(:step_into => ['managed_directory'])
     runner.converge 'managed_directory::t_basic_reversed'
   }
   before(:each) {
