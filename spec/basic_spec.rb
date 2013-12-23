@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'file a followed by managed_directory' do
   let(:chef_run) {

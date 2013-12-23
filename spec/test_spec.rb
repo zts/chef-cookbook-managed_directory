@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'the test recipe example' do
   let(:chef_run) {

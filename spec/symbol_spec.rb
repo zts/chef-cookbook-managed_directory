@@ -1,4 +1,4 @@
-require 'chefspec'
+require 'spec_helper'
 
 describe 'a resource in the collection has a symbol for a name' do
   let(:chef_run) {
