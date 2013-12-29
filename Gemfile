@@ -6,5 +6,9 @@ gem "foodcritic", "~> 3.0"
 gem "rake"
 gem "yarjuf"
 
-gem 'test-kitchen', '~> 1.1'
-gem 'kitchen-docker'
+group :integration do
+  gem 'test-kitchen', '~> 1.1'
+  gem 'kitchen-docker'
+  gem 'kitchen-vagrant'
+end
+
