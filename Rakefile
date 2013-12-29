@@ -3,7 +3,7 @@ require "rspec/core/rake_task"
 
 desc "Run Foodcritic lint checks"
 FoodCritic::Rake::LintTask.new(:lint) do |t|
-  t.options = { :fail_tags => ["any"] }
+  t.options = { :fail_tags => ["correctness"] }
 end
 
 desc "Run ChefSpec examples"
