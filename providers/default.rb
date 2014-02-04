@@ -32,10 +32,17 @@ action :clean do
   # We use the File resource for this so that the activity is visibile
   # to report handlers.
   files_to_remove = directory_contents - managed_files
-  files_to_remove.each do |f|
-    file f do
-      action :delete
-      Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{f}"
+    if ::File.directory?(f)
+      directory f do
+        action :delete
+        recursive true
+        Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{f}"
+      end
+    else
+      file f do
+        action :delete
+        Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{f}"
+      end
     end
   end
 
