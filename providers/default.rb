@@ -23,7 +23,7 @@ action :clean do
 
   # Walk the resource collection to find resources that appear to be
   # contained by the managed_directory.  This depends on the resource's
-  # name attribute containing the full path to the file.
+  # path attribute containing the full path to the file.
   managed_files = run_context.resource_collection
                              .all_resources
                              .select { |r| r.respond_to? :path }
