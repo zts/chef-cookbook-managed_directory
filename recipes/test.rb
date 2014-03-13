@@ -34,5 +34,12 @@ file "#{testdir}/b" do
   action :touch
 end
 
+# Create a File resource for 'd'
+# by using the `path` method.
+file "#{testdir}/e" do
+  path "#{testdir}/d"  
+  action :touch
+end
+
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
 # files "a" and "b" only.  File "c" will have been removed.
