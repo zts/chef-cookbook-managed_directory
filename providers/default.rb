@@ -33,12 +33,11 @@ action :clean do
   # to report handlers.
   files_to_remove = directory_contents - managed_files
   files_to_remove.each do |f|
-    r = file f do
-      action :nothing
+    file f do
+      action :delete
       Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{f}"
     end
-    r.run_action(:delete)
-   end
+  end
 
   # If any files were removed, mark the resource as updated.
   new_resource.updated_by_last_action(true) unless files_to_remove.empty?
