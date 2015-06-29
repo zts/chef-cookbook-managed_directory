@@ -34,6 +34,13 @@ describe 'managed_directory::test_directories' do
       allow(File).to receive(:directory?).with('/tmp/foo/c_dir').and_return(true)
     end
 
+    it 'should clean managed_directory /tmp/foo' do
+      expect(chef_run).to clean_managed_directory('/tmp/foo').with(
+        clean_directories: true,
+        clean_files: false
+      )
+    end
+
     # The file /tmp/foo/a shouldn't be removed for this test since we've
     # disabled cleaning files in this recipe
     it 'should not remove file a' do

@@ -32,6 +32,10 @@ describe 'managed_directory::test' do
       allow(File).to receive(:directory?).with('/tmp/foo/c_dir').and_return(true)
     end
 
+    it 'should clean managed_directory' do
+      expect(chef_run).to clean_managed_directory('/tmp/foo')
+    end
+
     it 'should not remove file a' do
       expect(chef_run).to_not delete_file('/tmp/foo/a')
     end
