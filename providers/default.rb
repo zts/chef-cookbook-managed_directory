@@ -38,11 +38,13 @@ action :clean do
         recursive true
         action :delete
         Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
+        only_if { new_resource.clean_files }
       end
     else
       file e do
         action :delete
         Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{e}"
+        only_if { new_resource.clean_directories }
       end
     end
   end
