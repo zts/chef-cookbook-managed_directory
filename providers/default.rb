@@ -31,24 +31,22 @@ action :clean do
   # Remove any contents that appear to be unmanaged.
   # We use the File resource for this so that the activity is visibile
   # to report handlers.
-  files_to_remove = directory_contents - managed_files
-  files_to_remove.each do |f|
   entries_to_remove = directory_contents - managed_entries
   entries_to_remove.each do |e|
-    if ::File.directory?(f)
-      directory f do
+    if ::File.directory?(e)
+      directory e do
         recursive true
         action :delete
-        Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{f}"
+        Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
       end
     else
-      file f do
+      file e do
         action :delete
-        Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{f}"
+        Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{e}"
       end
     end
   end
 
   # If any files were removed, mark the resource as updated.
-  new_resource.updated_by_last_action(true) unless files_to_remove.empty?
+  new_resource.updated_by_last_action(true) unless entries_to_remove.empty?
 end
