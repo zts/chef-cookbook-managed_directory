@@ -4,7 +4,7 @@
 #
 # A simple demonstration of managed_directory, also used by chefspec.
 
-testdir = "/tmp/foo"
+testdir = '/tmp/foo'
 
 # Setup the test.
 # 1. Create the directory for our test files, during the compile phase.
