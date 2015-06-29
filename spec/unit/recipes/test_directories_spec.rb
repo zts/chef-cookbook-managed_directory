@@ -21,6 +21,7 @@ describe 'managed_directory::test_directories' do
 
     before do
       testdir_contents = [
+        '/tmp/foo/a',
         '/tmp/foo/a_dir',
         '/tmp/foo/b_dir',
         '/tmp/foo/c_dir'
@@ -31,6 +32,12 @@ describe 'managed_directory::test_directories' do
       allow(File).to receive(:directory?).with('/tmp/foo/a_dir').and_return(true)
       allow(File).to receive(:directory?).with('/tmp/foo/b_dir').and_return(true)
       allow(File).to receive(:directory?).with('/tmp/foo/c_dir').and_return(true)
+    end
+
+    # The file /tmp/foo/a shouldn't be removed for this test since we've
+    # disabled cleaning files in this recipe
+    it 'should not remove file a' do
+      expect(chef_run).to_not delete_file('/tmp/foo/a')
     end
 
     it 'should not remove directory a_dir' do

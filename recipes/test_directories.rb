@@ -26,6 +26,7 @@ end
 managed_directory testdir do
   action :clean
   clean_directories true
+  clean_files false
 end
 
 # Create a directory resource for 'b_dir'
