@@ -31,26 +31,23 @@ action :clean do
   # Remove any contents that appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
   entries_to_remove.each do |e|
-    if ::File.directory?(e)
+    if ::File.directory?(e) && new_resource.clean_directories
       directory e do
         recursive true
         action :delete
         Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
-        only_if { new_resource.clean_directories }
       end
-    elsif ::File.symlink?(e)
+    elsif ::File.symlink?(e) && new_resource.clean_links
       # Manage links as links to avoid warnings, as 'manage_symlink_source'
       # will eventually be disabled for File resources.
       link e do
         action :delete
         Chef::Log.info "Removing unmanaged symlink in #{new_resource.path}: #{e}"
-        only_if { new_resource.clean_links }
       end
-    else
+    elsif new_resource.clean_files
       file e do
         action :delete
         Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{e}"
-        only_if { new_resource.clean_files }
       end
     end
   end
