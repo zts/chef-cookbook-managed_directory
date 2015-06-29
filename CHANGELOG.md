@@ -1,7 +1,22 @@
 MANAGED_DIRECTORY CHANGELOG
-==================
+===========================
 
 This file is used to list changes made in each version of the managed_directory cookbook.
+
+UNRELEASED
+----------
+- Added cleaning of subdirectories
+- Added separate handling of links, which were formerly handled by the file
+	resource, as managing links via file resources is deprecated
+- Added attributes to control handling of files, directories and links
+	- `clean_files` and `clean_links` default to `true` to preserve existing
+		behavior
+	- `clean_directories` defaults to `false` to preserve existing behavior
+- Updated tests to current ChefSpec and ServerSpec, following examples from
+	ChefDK's `chef generate cookbook` output
+- Updated Test Kitchen to current CentOS (6.6)
+- Updated README.md for new behaviors
+- Added ChefSpec matchers for test-ability
 
 0.1.0
 -----
