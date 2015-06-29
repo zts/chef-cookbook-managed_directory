@@ -32,6 +32,12 @@ run.  Any other files will be removed.
 ### Attribute Parameters
 
 - `path` - (name attribute) The absolute path to the directory to be managed.
+- `clean_files` - Boolean to determine whether unmanaged files should be
+  removed. Default is `true`.
+- `clean_links` - Boolean to determine whether unmanaged links should be
+  removed. Default is `true`.
+- `clean_directories` - Boolean to determine whether unmanaged subdirectories
+  should be removed. Default is `false`.
 
 
 Usage
@@ -48,6 +54,12 @@ test
 
 The 'test' recipe illustrates use of the `managed_directory` resource.
 
+test_directories
+----------------
+
+The 'test_directories' recipe illustrates use of the `managed_directory`
+resource when having it clean up unwanted subdirectories.
+
 
 Caveats
 =======
@@ -56,8 +68,8 @@ Caveats
    to ensure that the directory exists, use the Directory resource
    separately.
 
- * This doesn't even try to cope with subdirectories (managed or
-   otherwise) inside the managed_directory.
+ * If you require subdirectories to be managed as well, be sure to set the
+   `clean_directories` attribute to `true`
 
  * A file is considered to be managed if there is a resource with a
    name attribute equal to the file's full path.  It will do the wrong
