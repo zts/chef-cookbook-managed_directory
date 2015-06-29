@@ -1,0 +1,24 @@
+AlignParameters:
+  Enabled: false
+ClassAndModuleChildren:
+  Enabled: false
+Encoding:
+  Enabled: false
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+LineLength:
+  Max: 200
+NumericLiterals:
+  Enabled: false
+HashSyntax:
+  Enabled: false
+#   EnforcedStyle: hash_rockets
+AllCops:
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - Guardfile
+    - Vagrantfile
+    - metadata.rb
+    - spec/**/*
+    - vendor/**/*
