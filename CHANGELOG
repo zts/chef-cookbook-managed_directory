@@ -1,7 +1,0 @@
-0.1.0
-	add chefspec tests
-	FIX don't blow up when resource names are symbols
-	- Thanks to Mark Friedgan (hubrix) for this fix.
-
-0.0.1
-	initial release
