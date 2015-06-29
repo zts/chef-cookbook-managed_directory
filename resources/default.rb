@@ -28,8 +28,11 @@ end
 # Path of the directory we'll manage.
 attribute :path, :kind_of => String, :name_attribute => true
 
-# Should we clean files out of our managed directory?
+# Should we clean files out of our managed directory? Default, yes
 attribute :clean_files, :kind_of => [TrueClass, FalseClass], :default => true
 
-# Should we clean subdirectories out of our managed directory?
+# Should we clean links out of our managed directory? Default, yes
+attribute :clean_links, :kind_of => [TrueClass, FalseClass], :default => true
+
+# Should we clean subdirectories out of our managed directory? Default, no
 attribute :clean_directories, :kind_of => [TrueClass, FalseClass], :default => false

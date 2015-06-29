@@ -16,10 +16,17 @@ end.run_action(:create)
 # %w{a b c}.each do |f|
 #   ::File.new("#{testdir}/#{f}", "w+") unless ::File.exist?("#{testdir}/#{f}")
 # end
+# ::File.symlink("#{testdir}/b", "#{testdir}/b_link") unless ::File.exist?("#{testdir}/b_link")
 
 # Create a File resource for 'a'
 file "#{testdir}/a" do
   action :touch
+end
+
+link "#{testdir}/a_link" do
+  action :create
+  to "#{testdir}/a"
+  link_type :symbolic
 end
 
 # Define the managed_directory

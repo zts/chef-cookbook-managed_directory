@@ -29,8 +29,6 @@ action :clean do
   end.compact
 
   # Remove any contents that appear to be unmanaged.
-  # We use the File resource for this so that the activity is visibile
-  # to report handlers.
   entries_to_remove = directory_contents - managed_entries
   entries_to_remove.each do |e|
     if ::File.directory?(e)
@@ -39,6 +37,14 @@ action :clean do
         action :delete
         Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
         only_if { new_resource.clean_directories }
+      end
+    elsif ::File.symlink?(e)
+      # Manage links as links to avoid warnings, as 'manage_symlink_source'
+      # will eventually be disabled for File resources.
+      link e do
+        action :delete
+        Chef::Log.info "Removing unmanaged symlink in #{new_resource.path}: #{e}"
+        only_if { new_resource.clean_links }
       end
     else
       file e do

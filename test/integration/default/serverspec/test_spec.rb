@@ -10,8 +10,17 @@ describe 'managed_directory::test' do
       it { should be_file }
     end
 
+    describe file('/tmp/foo/a_link') do
+      it { should be_file }
+      it { should be_linked_to '/tmp/foo/a' }
+    end
+
     describe file('/tmp/foo/b') do
       it { should be_file }
+    end
+
+    describe file('/tmp/foo/b_link') do
+      it { should_not be_file }
     end
 
     describe file('/tmp/foo/c') do
