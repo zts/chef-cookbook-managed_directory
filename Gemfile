@@ -1,14 +1,23 @@
-source "https://rubygems.org"
+# This is primarily here for the CI server, so that it can create
+# the necessary environment to run the tests in. If you are using ChefDK,
+# you do not need to run `bundle install`, as all these tools are already
+# included (via `chef exec`)
 
-gem "berkshelf",  "~> 2.0"
-gem "chefspec",   "~> 3.0"
-gem "foodcritic", "~> 3.0"
-gem "rake"
-gem "yarjuf"
+source 'https://rubygems.org'
+
+gem 'berkshelf'
+gem 'semverse'
+gem 'chef'
+gem 'chef-zero'
+gem 'foodcritic'
+gem 'rake-chef-syntax'
+gem 'chefspec'
+gem 'rubocop'
+gem 'stove'
+gem 'yarjuf'
 
 group :integration do
-  gem 'test-kitchen', '~> 1.1'
-  gem 'kitchen-docker'
+  gem 'test-kitchen'
   gem 'kitchen-vagrant'
+  gem 'kitchen-docker'
 end
-
