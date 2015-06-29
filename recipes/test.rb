@@ -42,4 +42,5 @@ file "#{testdir}/b" do
 end
 
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
-# files "a" and "b" only.  File "c" will have been removed.
+# files "a" and "b" and symbolic link "a_link".  File "c" and symlink "b_link"
+# will have been removed.
