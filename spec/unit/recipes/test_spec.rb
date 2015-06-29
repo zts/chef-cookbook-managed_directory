@@ -54,7 +54,7 @@ describe 'managed_directory::test' do
     end
 
     it 'should remove link b_link' do
-      expect(chef_run).to delete_file('/tmp/foo/b_link')
+      expect(chef_run).to delete_link('/tmp/foo/b_link')
     end
 
     it 'should remove file c' do
