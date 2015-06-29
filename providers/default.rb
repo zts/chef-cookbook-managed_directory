@@ -24,9 +24,9 @@ action :clean do
   # Walk the resource collection to find resources that appear to be
   # contained by the managed_directory.  This depends on the resource's
   # name attribute containing the full path to the file.
-  managed_files = run_context.resource_collection.all_resources.map { |r|
+  managed_entries = run_context.resource_collection.all_resources.map do |r|
     r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
-  }.compact
+  end.compact
 
   # Remove any contents that appear to be unmanaged.
   # We use the File resource for this so that the activity is visibile
