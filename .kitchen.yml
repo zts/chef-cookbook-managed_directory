@@ -1,12 +1,12 @@
----
 driver:
   name: vagrant
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
-  - name: centos-6.4
+  - name: centos-6.6
+  # - name: ubuntu-14.04
 
 suites:
   - name: default
