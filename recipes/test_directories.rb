@@ -37,4 +37,5 @@ directory "#{testdir}/b_dir" do
 end
 
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
-# files "a" and "b" only.  File "c" will have been removed.
+# subdirectories "a_dir" and "b_dir". Subdirectory "c_dir" should have been
+# removed.
