@@ -5,10 +5,10 @@
 # used by chefspec
 
 # Define the managed_directory
-managed_directory "/tmp/foo" do
+managed_directory '/tmp/foo' do
   action :clean
 end
 
 log :test do
-  message "LOG: t_resource_name_symbol test."
+  message 'LOG: t_resource_name_symbol test.'
 end
