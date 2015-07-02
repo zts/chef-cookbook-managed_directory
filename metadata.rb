@@ -5,3 +5,5 @@ license          "Apache 2.0"
 description      "Provides the managed_directory resource"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.0"
+source_url       'https://github.com/zts/chef-cookbook-managed_directory'
+issues_url       'https://github.com/zts/chef-cookbook-managed_directory/issues'
