@@ -22,11 +22,17 @@ action :clean do
   directory_contents = ::Dir.glob("#{new_resource.path}/*")
 
   # Walk the resource collection to find resources that appear to be
-  # contained by the managed_directory.  This depends on the resource's
-  # name attribute containing the full path to the file.
-  managed_entries = run_context.resource_collection.all_resources.map do |r|
-    r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
-  end.compact
+  # contained by the managed_directory.
+  
+  # Pass 1: Find all the resources which have a path attribute
+  path_resources = run_context.resource_collection.all_resources.select do |r|
+    r.respond_to?(:path)
+  end
+
+  # Pass 2: See if any of the resources we found have a path that matches ours
+  managed_entries = path_resources.map do |r|
+    r.path if r.path.start_with?("#{new_resource.path}/")
+  end
 
   # Remove any contents that appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
