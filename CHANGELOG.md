@@ -5,6 +5,12 @@ This file is used to list changes made in each version of the managed_directory 
 
 UNRELEASED
 ----------
+- Update provider to examine resources based on their path, rather than
+	the resource names. This accounts for resources being named something other
+	than their path.
+
+v0.2.0
+----------
 - Added cleaning of subdirectories
 - Added separate handling of links, which were formerly handled by the file
 	resource, as managing links via file resources is deprecated
@@ -18,15 +24,11 @@ UNRELEASED
 - Updated README.md for new behaviors
 - Added ChefSpec matchers for test-ability
 
-0.1.0
+v0.1.0
 -----
 - add chefspec tests
 - FIX don't blow up when resource names are symbols
 	- Thanks to Mark Friedgan (hubrix) for this fix.
-
-0.0.1
------
-	initial release
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
