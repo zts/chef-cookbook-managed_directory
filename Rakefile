@@ -53,12 +53,12 @@ rescue LoadError
   puts '>>>>> Kitchen gem not loaded, omitting tasks' # unless ENV['CI']
 end
 
-# desc 'Release and Publish'
-# task :release do
-#   if File.exist?("#{ENV['HOME']}/.stove")
-#     require 'stove/rake_task'
-#     Stove::RakeTask.new(:release)
-#   else
-#     puts "Please use 'stove login' before attempting to release."
-#   end
-# end
+desc 'Release and Publish'
+task :release do
+  if File.exist?("#{ENV['HOME']}/.stove")
+    require 'stove/rake_task'
+    Stove::RakeTask.new(:release)
+  else
+    puts "Please use 'stove login' before attempting to release."
+  end
+end
