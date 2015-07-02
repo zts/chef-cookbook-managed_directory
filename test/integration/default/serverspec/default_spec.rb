@@ -1,16 +1,19 @@
-require "spec_helper"
+require 'spec_helper'
 
-describe "basic test recipe" do
-  describe file('/tmp/foo/a') do
-    it { should be_file }
-  end
+describe 'managed_directory::default' do
+  # Serverspec examples can be found at
+  # http://serverspec.org/resource_types.html
 
-  describe file('/tmp/foo/b') do
-    it { should be_file }
-  end
-
-  describe file('/tmp/foo/c') do
-    it { should_not be_file }
-  end
-
+  # if %w(linux redhat fedora ubuntu debian).include?(os[:family])
+  #   # Tests for Linux
+  #   it 'does something in linux' do
+  #     skip 'Replace this with meaningful tests'
+  #   end
+  #
+  # elsif %w(windows).include?(os[:family])
+  #   # Tests for Windows
+  #   it 'does something in windows' do
+  #     skip 'Replace this with meaningful tests'
+  #   end
+  # end
 end
