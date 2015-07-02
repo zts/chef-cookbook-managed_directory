@@ -23,7 +23,10 @@ action :clean do
 
   # Walk the resource collection to find resources that appear to be
   # contained by the managed_directory.
-  
+  # Select resources by path, rather than by name, to account for resources
+  # whose name and path differ, so that we can manage them properly.
+  # Thanks to @srenatus for the contribution!
+
   # Pass 1: Find all the resources which have a path attribute
   path_resources = run_context.resource_collection.all_resources.select do |r|
     r.respond_to?(:path)
