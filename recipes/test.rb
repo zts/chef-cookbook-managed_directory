@@ -41,6 +41,13 @@ file "#{testdir}/b" do
   action :touch
 end
 
+# Create a File resource for 'd' by using the `path` method and
+# having the resource name itself not match our managed_directory path.
+file 'named_file_resource' do
+  path "#{testdir}/d"
+  action :touch
+end
+
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
-# files "a" and "b" and symbolic link "a_link".  File "c" and symlink "b_link"
-# will have been removed.
+# files "a", "b", and "d" and symbolic link "a_link".  File "c" and symlink
+# "b_link" will have been removed.
