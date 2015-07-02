@@ -13,10 +13,12 @@ directory testdir do
 end.run_action(:create)
 
 # 2. Put some files in it, without using Chef, before convergence
-# %w{a b c}.each do |f|
-#   ::File.new("#{testdir}/#{f}", "w+") unless ::File.exist?("#{testdir}/#{f}")
-# end
-# ::File.symlink("#{testdir}/b", "#{testdir}/b_link") unless ::File.exist?("#{testdir}/b_link")
+unless defined?(ChefSpec)
+  %w(a b c d e).each do |f|
+    ::File.new("#{testdir}/#{f}", 'w+') unless ::File.exist?("#{testdir}/#{f}")
+  end
+  ::File.symlink("#{testdir}/b", "#{testdir}/b_link") unless ::File.exist?("#{testdir}/b_link")
+end
 
 # Create a File resource for 'a'
 file "#{testdir}/a" do

@@ -13,9 +13,11 @@ directory testdir do
 end.run_action(:create)
 
 # 2. Put some files in it, without using Chef, before convergence
-# %w{a b c}.each do |d|
-#   ::Dir.mkdir("#{testdir}/#{d}_dir") unless ::Dir.exist?("#{testdir}/#{d}_dir")
-# end
+unless defined?(ChefSpec)
+  %w(a b c).each do |d|
+    ::Dir.mkdir("#{testdir}/#{d}_dir") unless ::Dir.exist?("#{testdir}/#{d}_dir")
+  end
+end
 
 # Create a directory resource for 'a_dir'
 directory "#{testdir}/a_dir" do
