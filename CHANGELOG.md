@@ -7,7 +7,7 @@ UNRELEASED
 ----------
 - Update provider to examine resources based on their path, rather than
 	the resource names. This accounts for resources being named something other
-	than their path. Thanks to @srenatus for this one!
+	than their path. Thanks to [srenatus](https://github.com/srenatus)!
 
 v0.2.0
 ----------
