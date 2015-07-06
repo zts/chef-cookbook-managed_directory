@@ -4,8 +4,15 @@
 #
 # used by chefspec
 
+testdir = '/tmp/baz'
+
+# Create the directory for our test files, during the compile phase.
+directory testdir do
+  action :nothing
+end.run_action(:create)
+
 # Define the managed_directory
-managed_directory '/tmp/foo' do
+managed_directory testdir do
   action :clean
 end
 
