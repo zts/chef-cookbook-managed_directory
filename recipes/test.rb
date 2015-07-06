@@ -18,8 +18,12 @@ unless defined?(ChefSpec)
     Chef::Log.warn("Creating test file #{testdir}/#{f}")
     ::File.new("#{testdir}/#{f}", 'w+') unless ::File.exist?("#{testdir}/#{f}")
   end
+
   Chef::Log.warn("Creating test symlink #{testdir}/b_link to #{testdir}/b")
   ::File.symlink("#{testdir}/b", "#{testdir}/b_link") unless ::File.exist?("#{testdir}/b_link")
+
+  Chef::Log.warn("Creating test directory #{testdir}/c_dir")
+  ::Dir.mkdir("#{testdir}/c_dir") unless ::Dir.exist?("#{testdir}/c_dir")
 end
 
 # Create a File resource for 'a'
