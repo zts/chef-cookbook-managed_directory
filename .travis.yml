@@ -3,7 +3,7 @@ rvm:
   - '2.1.6'
 
 install:
-  - bundle install --path vendor/bundler
+  - bundle install --path vendor/bundler --without integration
 
 script:
   - bundle exec rake
