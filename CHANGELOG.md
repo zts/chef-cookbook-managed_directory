@@ -3,7 +3,7 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
-UNRELEASED
+v0.2.1
 ------
 - Fix bug for subdirectories when clean_directories is false. This would cause
 	the subdirectory to be handed to the `file` resource in the provider, which
