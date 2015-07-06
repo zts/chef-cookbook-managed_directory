@@ -3,6 +3,12 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
+UNRELEASED
+------
+- Fix bug for subdirectories when clean_directories is false. This would cause
+	the subdirectory to be handed to the `file` resource in the provider, which
+	would then cause chef-client to abort.
+
 v0.2.0
 ------
 - Added cleaning of subdirectories
