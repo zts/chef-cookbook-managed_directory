@@ -20,8 +20,8 @@ desc 'Run ChefSpec tests'
 task :spec do
   puts 'Running chefspec tests...'
   RSpec::Core::RakeTask.new(:spec) do |t|
-    t.rspec_opts = %w[-f JUnit -o results.xml]
-    # t.rspec_opts = %w[--color]
+    # t.rspec_opts = %w[-f JUnit -o results.xml]
+    t.rspec_opts = %w[--color]
   end
 end
 
