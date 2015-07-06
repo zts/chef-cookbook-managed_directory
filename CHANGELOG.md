@@ -5,14 +5,15 @@ This file is used to list changes made in each version of the managed_directory 
 
 UNRELEASED
 ----------
-- Fixed bug where attempting to remove a directory with contents from the
-	managed_directory would cause chef-client to abort.
-	- Added contents to subdirectories to test setup to trigger bug
-	- Replaced `directory` resource in the provider with a `ruby_block` call to
-		`FileUtils.remove_dir()` in order to cleanly recursively delete a directory.
-	- Added `force_directories` attribute to allow `FileUtils.remove_dir()` to
-		remove the directory even if there are open files. Defaults to `false`
-	- Updated tests to reflect change from `directory` to `ruby_block`
+Fixed bug where attempting to remove a directory with contents from the
+managed_directory would cause chef-client to abort.
+
+- Added contents to subdirectories to test setup to trigger bug
+- Replaced `directory` resource in the provider with a `ruby_block` call to
+	`FileUtils.remove_dir()` in order to cleanly recursively delete a directory.
+- Added `force_directories` attribute to allow `FileUtils.remove_dir()` to
+	remove the directory even if there are open files. Defaults to `false`
+- Updated tests to reflect change from `directory` to `ruby_block`
 
 v0.2.0
 ------
