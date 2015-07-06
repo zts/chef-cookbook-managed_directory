@@ -3,6 +3,12 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
+UNRELEASED
+------
+- Update provider to examine resources based on their path, rather than
+	the resource names. This accounts for resources being named something other
+	than their path. Thanks to [srenatus](https://github.com/srenatus)!
+
 v0.2.1
 ------
 - Fix bug for subdirectories when clean_directories is false. This would cause

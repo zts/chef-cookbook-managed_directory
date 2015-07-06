@@ -80,13 +80,29 @@ Caveats
    (eg, from within a `ruby_block` or LWRP later in the run list) will
    be incorrectly identified as "unmanaged", and then deleted.  They
    will be recreated later in the run, but this creates a window where
-   the file is missing.
+   the file is missing. For a work-around, you can define the
+   `managed_directory` with `action :none` and use another resource to notify
+   it `:delayed`. For example, if you're using the `yum` cookbook to manage
+   all your repositories, you might do something like:
+
+```ruby
+managed_directory '/etc/yum.repos.d' do
+  action :nothing
+  clean_directories true
+end
+
+ruby_block 'delayed_managed_directory /etc/yum.repos.d' do
+  block { true }
+  notifies	:clean, 'managed_directory[/etc/yum.repos.d]', :delayed
+end
+```
 
 
 License and Author
 ==================
 
 Authors:
+
 - Zachary Stevens ([zts](https://github.com/zts))
 - Gregory Ruiz-Ade ([gkra](https://github.com/gkra))
 
