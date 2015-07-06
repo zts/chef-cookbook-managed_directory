@@ -34,11 +34,10 @@ describe 'managed_directory::test' do
     describe file('/tmp/foo/e') do
       it { should_not be_file }
     end
-    
+
     describe file('/tmp/foo/c_dir') do
       it { should be_directory }
     end
-
   elsif %w(windows).include?(os[:family])
     # Tests for Windows
     it 'does something in windows' do
