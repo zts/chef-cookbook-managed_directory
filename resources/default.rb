@@ -36,3 +36,6 @@ attribute :clean_links, :kind_of => [TrueClass, FalseClass], :default => true
 
 # Should we clean subdirectories out of our managed directory? Default, no
 attribute :clean_directories, :kind_of => [TrueClass, FalseClass], :default => false
+
+# Should we force directory removal, or fail if there are open files?
+attribute :force_directories, :kind_of => [TrueClass, FalseClass], :default => false

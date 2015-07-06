@@ -28,6 +28,8 @@ action :clean do
     r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
   end.compact
 
+  force_directories = new_resource.force_directories
+
   # Remove any contents that appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
   entries_to_remove.each do |e|
