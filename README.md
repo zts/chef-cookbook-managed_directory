@@ -87,7 +87,7 @@ Caveats
 
 ```ruby
 managed_directory '/etc/yum.repos.d' do
-  action	:nothing
+  action :nothing
   clean_directories true
 end
 
