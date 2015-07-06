@@ -34,10 +34,15 @@ action :clean do
   entries_to_remove = directory_contents - managed_entries
   entries_to_remove.each do |e|
     if ::File.directory?(e) && new_resource.clean_directories
-      directory e do
-        recursive true
-        action :delete
-        Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
+      # Using a ruby_block because directory won't succeed if there are any
+      # files or subdirectories inside the directory. FileUtils.remove_dir()
+      # will do so recursively.
+      ruby_block "recursively delete directory #{e}" do
+        block do
+          require 'fileutils'
+          Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
+          FileUtils.remove_dir(e, force_directories)
+        end
       end
     elsif ::File.symlink?(e) && new_resource.clean_links
       # Manage links as links to avoid warnings, as 'manage_symlink_source'
