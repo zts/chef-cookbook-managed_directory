@@ -37,7 +37,7 @@ action :clean do
       # Using a ruby_block because directory won't succeed if there are any
       # files or subdirectories inside the directory. FileUtils.remove_dir()
       # will do so recursively.
-      ruby_block "recursively delete directory #{e}" do
+      ruby_block "delete directory #{e}" do
         block do
           require 'fileutils'
           Chef::Log.info "Removing unmanaged directory in #{new_resource.path}: #{e}"
