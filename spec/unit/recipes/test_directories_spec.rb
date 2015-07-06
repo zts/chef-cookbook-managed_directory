@@ -48,15 +48,18 @@ describe 'managed_directory::test_directories' do
     end
 
     it 'should not remove directory a_dir' do
-      expect(chef_run).to_not delete_directory('/tmp/bar/a_dir')
+      # expect(chef_run).to_not delete_directory('/tmp/bar/a_dir')
+      expect(chef_run).to_not run_ruby_block('delete directory /tmp/bar/a_dir')
     end
 
     it 'should not remove directory b_dir' do
-      expect(chef_run).to_not delete_directory('/tmp/bar/b_dir')
+      # expect(chef_run).to_not delete_directory('/tmp/bar/b_dir')
+      expect(chef_run).to_not run_ruby_block('delete directory /tmp/bar/b_dir')
     end
 
     it 'should remove directory c_dir' do
-      expect(chef_run).to delete_directory('/tmp/bar/c_dir')
+      # expect(chef_run).to delete_directory('/tmp/bar/c_dir')
+      expect(chef_run).to run_ruby_block('delete directory /tmp/bar/c_dir')
     end
   end
 end
