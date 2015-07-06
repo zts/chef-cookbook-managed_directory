@@ -86,7 +86,9 @@ Caveats
 License and Author
 ==================
 
-Author: Zachary Stevens (<zts@cryptocracy.com>)
+Authors:
+- Zachary Stevens ([zts](https://github.com/zts))
+- Gregory Ruiz-Ade ([gkra](https://github.com/gkra))
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
