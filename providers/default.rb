@@ -35,7 +35,7 @@ action :clean do
   # Pass 2: See if any of the resources we found have a path that matches ours
   managed_entries = path_resources.map do |r|
     r.path if r.path.start_with?("#{new_resource.path}/")
-  end
+  end.compact
 
   # Remove any contents that appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
