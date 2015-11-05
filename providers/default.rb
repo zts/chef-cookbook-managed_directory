@@ -17,15 +17,31 @@
 # limitations under the License.
 #
 
+# Chef 10 compatibility
+if defined?(use_inline_resources)
+  use_inline_resources
+  using_inline_resources = true
+else
+  using_inline_resources = false
+end
+
 action :clean do
   # get the contents of the managed_directory on disk
   directory_contents = ::Dir.glob("#{new_resource.path}/*")
 
+  # Chef 10 compatibility
+  resources = using_inline_resources ? run_context.parent_run_context.resource_collection.all_resources : run_context.resource_collection.all_resources
+
   # Walk the resource collection to find resources that appear to be
   # contained by the managed_directory.  This depends on the resource's
   # name attribute containing the full path to the file.
-  managed_entries = run_context.resource_collection.all_resources.map do |r|
-    r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
+  managed_entries = resources.map do |r|
+    if r.name.to_s.start_with?("#{new_resource.path}/")
+      r.name.to_s
+    # Also catch the 'path' attribute for friendly-named resources
+    elsif defined?(r.path) and r.path.to_s.start_with?("#{new_resource.path}/")
+      r.path.to_s
+    end
   end.compact
 
   # Remove any contents that appear to be unmanaged.
