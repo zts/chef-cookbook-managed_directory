@@ -46,8 +46,11 @@ action :clean do
     r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
   end.compact.uniq
 
-  # Remove any contents that appear to be unmanaged.
+  # Generate list of entries which appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
+
+  # Iterate through each entry (path) and identify appropriate
+  # removal action as dictated by resource's properties
   entries_to_remove.each do |e|
     if ::File.directory?(e) && new_resource.clean_directories
       directory e do
@@ -69,7 +72,4 @@ action :clean do
       end
     end
   end
-
-  # If any files were removed, mark the resource as updated.
-  new_resource.updated_by_last_action(true) unless entries_to_remove.empty?
 end
