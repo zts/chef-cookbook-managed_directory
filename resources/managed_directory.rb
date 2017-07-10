@@ -62,9 +62,8 @@ action :clean do
         action :delete
         Chef::Log.info "Removing unmanaged symlink in #{new_resource.path}: #{e}"
       end
-    elsif new_resource.clean_files
-      file "file #{e}" do
-        path e
+    elsif new_resource.clean_files && ::File.file?(e)
+      file e do
         action :delete
         Chef::Log.info "Removing unmanaged file in #{new_resource.path}: #{e}"
       end
