@@ -4,7 +4,7 @@ ClassAndModuleChildren:
   Enabled: false
 Encoding:
   Enabled: false
-SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 LineLength:
   Max: 200
@@ -12,6 +12,8 @@ NumericLiterals:
   Enabled: false
 HashSyntax:
   Enabled: false
+Metrics/BlockLength:
+  Max: 50
 #   EnforcedStyle: hash_rockets
 AllCops:
   Exclude:

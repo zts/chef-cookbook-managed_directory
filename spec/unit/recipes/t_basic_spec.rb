@@ -7,12 +7,12 @@
 require 'spec_helper'
 
 describe 'managed_directory::t_basic' do
-  context 'When all attributes are default, on CentOS 6.6' do
+  context 'When all attributes are default, on CentOS 6.8' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(
         step_into: ['managed_directory'],
         platform: 'centos',
-        version: '6.6'
+        version: '6.8'
       ) do |node|
         # Set/override attributes here
       end
@@ -21,6 +21,7 @@ describe 'managed_directory::t_basic' do
 
     before(:each) do
       allow(Dir).to receive(:glob).and_call_original
+      allow(File).to receive(:file?).and_call_original
     end
 
     describe 'given only file a' do
@@ -35,6 +36,7 @@ describe 'managed_directory::t_basic' do
     describe 'given file b' do
       before(:each) do
         allow(Dir).to receive(:glob).with('/tmp/foo/*').and_return(['/tmp/foo/b'])
+        allow(File).to receive(:file?).with('/tmp/foo/b').and_return true
       end
 
       it 'should remove file b' do
@@ -45,6 +47,7 @@ describe 'managed_directory::t_basic' do
     describe 'given files a and b' do
       before(:each) do
         allow(Dir).to receive(:glob).with('/tmp/foo/*').and_return(['/tmp/foo/a','/tmp/foo/b'])
+        allow(File).to receive(:file?).with('/tmp/foo/b').and_return true
       end
 
       it 'should not remove file a' do

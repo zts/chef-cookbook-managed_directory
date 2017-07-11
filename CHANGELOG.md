@@ -3,6 +3,13 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
+v0.3.0
+------
+- converted from LWRP to custom resource
+- fixed potential false positive where resource reported an update
+- fixed issue where non-path named resources were skipped
+- Chef 13 compatible
+
 v0.2.1
 ------
 - Fix bug for subdirectories when clean_directories is false. This would cause

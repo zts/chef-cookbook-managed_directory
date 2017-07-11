@@ -1,9 +1,9 @@
 Description
 ===========
 
-Provides an LWRP to declare that a directory's contents are entirely
-managed by Chef.  When a node is converged, any files present in the
-`managed_directory` that are not managed by Chef will be removed.
+Provides a custom resource to declare that a directory's contents are
+entirely managed by Chef.  When a node is converged, any files present
+in the `managed_directory` that are not managed by Chef will be removed.
 
 
 Requirements
@@ -16,7 +16,7 @@ Known to work on CentOS and OS X.  Should work on other Unix-like
 systems.
 
 
-Resource/Provider
+Resource
 =================
 
 `managed_directory`
@@ -76,8 +76,8 @@ Caveats
    thing if this assumption is not true for the contents of your
    directory.
 
- * Files managed by resources created after this LWRP is converged
-   (eg, from within a `ruby_block` or LWRP later in the run list) will
+ * Files managed by resources created after this resource is converged
+   (eg, from within a `ruby_block` or resource later in the run list) will
    be incorrectly identified as "unmanaged", and then deleted.  They
    will be recreated later in the run, but this creates a window where
    the file is missing.
@@ -89,6 +89,7 @@ License and Author
 Authors:
 - Zachary Stevens ([zts](https://github.com/zts))
 - Gregory Ruiz-Ade ([gkra](https://github.com/gkra))
+- Heig Gregorian ([hgregorian](https://github.com/hgregorian))
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

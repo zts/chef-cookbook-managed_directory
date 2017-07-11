@@ -7,12 +7,12 @@
 require 'spec_helper'
 
 describe 'managed_directory::test_directories' do
-  context 'When all attributes are default, on CentOS 6.6' do
+  context 'When all attributes are default, on CentOS 6.8' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(
         step_into: ['managed_directory'],
         platform: 'centos',
-        version: '6.6'
+        version: '6.8'
       ) do |node|
         # Set/override attributes here
       end
