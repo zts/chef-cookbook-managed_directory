@@ -40,10 +40,9 @@ action :clean do
   directory_contents = ::Dir.glob("#{new_resource.path}/*")
 
   # Walk the resource collection to find resources that appear to be
-  # contained by the managed_directory.  This depends on the resource's
-  # name attribute containing the full path to the file.
+  # contained by the managed_directory.
   managed_entries = run_context.root_run_context.resource_collection.all_resources.map do |r|
-    r.name.to_s if r.name.to_s.start_with?("#{new_resource.path}/")
+    r.identity if r.identity.start_with?("#{new_resource.path}/")
   end.compact.uniq
 
   # Generate list of entries which appear to be unmanaged.
