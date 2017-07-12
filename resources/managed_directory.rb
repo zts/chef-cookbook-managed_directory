@@ -41,9 +41,9 @@ action :clean do
 
   # Walk the resource collection to find resources that appear to be
   # contained by the managed_directory.
-  managed_entries = run_context.root_run_context.resource_collection.all_resources.map do |r|
-    r.identity if r.identity.start_with?("#{new_resource.path}/")
-  end.compact.uniq
+  managed_entries = run_context.root_run_context.resource_collection.all_resources.select do |r|
+    r.identity.is_a?(String) && r.identity.start_with?("#{new_resource.path}/")
+  end.map(&:identity).uniq
 
   # Generate list of entries which appear to be unmanaged.
   entries_to_remove = directory_contents - managed_entries
