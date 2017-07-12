@@ -3,6 +3,13 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
+v0.3.1
+------
+- Fixed bug where a resource's 'identity' method returns a non-`String`
+  (ex. package resource can accept an `Array`) causing an exception
+  when using the 'start_with?' method.
+- Added CentOS 7.3 to test kitchen
+
 v0.3.0
 ------
 - converted from LWRP to custom resource
