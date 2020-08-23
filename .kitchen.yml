@@ -1,13 +1,24 @@
+---
 driver:
-  name: vagrant
+  name: dokken
+  chef_version: 14
 
 provisioner:
-  name: chef_zero
+  name: dokken
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
 
 platforms:
-  - name: centos-6.8
-  - name: centos-7.3
-  # - name: ubuntu-14.04
+  - name: centos-6
+    driver:
+      image: dokken/centos-6
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
 
 suites:
   - name: default
