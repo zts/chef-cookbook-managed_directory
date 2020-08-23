@@ -10,7 +10,7 @@ describe 'test-managed_directory::test_directories' do
   context 'When all attributes are default, on CentOS 6.10' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(
-        step_into: ['managed_directory'],
+        step_into: ['managed_directory', 'test_object'],
         platform: 'centos',
         version: '6.10'
       ) do |node|

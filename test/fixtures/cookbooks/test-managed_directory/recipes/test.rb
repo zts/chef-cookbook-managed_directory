@@ -56,6 +56,12 @@ file 'named_file_resource' do
   action :touch
 end
 
+# Create a file using a custom resource
+test_object "#{testdir}/e" do
+  object_type "file"
+  action :create
+end
+
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
 # directory "c_dir", files "a", "b", "d", and "e" and symbolic link "a_link".
 # File "c" and symlink "b_link" will have been removed.

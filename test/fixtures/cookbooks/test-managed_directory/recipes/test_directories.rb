@@ -44,6 +44,12 @@ directory "#{testdir}/b_dir" do
   action :create
 end
 
+# Create a file using a custom resource
+test_object "#{testdir}/d_dir" do
+  object_type "directory"
+  action :create
+end
+
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
 # subdirectories "a_dir", "b_dir", and "d_dir". Subdirectory "c_dir" should have been
 # removed.
