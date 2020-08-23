@@ -6,7 +6,7 @@
 
 require 'spec_helper'
 
-describe 'managed_directory::test_directories' do
+describe 'test-managed_directory::test_directories' do
   context 'When all attributes are default, on CentOS 6.10' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(

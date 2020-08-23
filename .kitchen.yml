@@ -23,6 +23,6 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[managed_directory::test]
-      - recipe[managed_directory::test_directories]
+      - recipe[test-managed_directory::test]
+      - recipe[test-managed_directory::test_directories]
     attributes:
