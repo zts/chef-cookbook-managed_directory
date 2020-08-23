@@ -57,5 +57,5 @@ file 'named_file_resource' do
 end
 
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
-# directory "c_dir", files "a", "b", and "d" and symbolic link "a_link".
+# directory "c_dir", files "a", "b", "d", and "e" and symbolic link "a_link".
 # File "c" and symlink "b_link" will have been removed.

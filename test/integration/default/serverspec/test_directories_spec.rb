@@ -18,6 +18,10 @@ describe 'managed_directory::test_directories' do
       it { should_not be_directory }
     end
 
+    describe file('/tmp/bar/d_dir') do
+      it { should be_directory }
+    end
+
   elsif %w(windows).include?(os[:family])
     # Tests for Windows
     it 'does something in windows' do

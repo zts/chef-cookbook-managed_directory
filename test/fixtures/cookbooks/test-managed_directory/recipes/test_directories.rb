@@ -14,7 +14,7 @@ end.run_action(:create)
 
 # 2. Put some files in it, without using Chef, before convergence
 unless defined?(ChefSpec)
-  %w(a b c).each do |d|
+  %w(a b c d).each do |d|
     Chef::Log.warn("Creating test directory #{testdir}/#{d}_dir")
     ::Dir.mkdir("#{testdir}/#{d}_dir") unless ::Dir.exist?("#{testdir}/#{d}_dir")
   end
@@ -45,5 +45,5 @@ directory "#{testdir}/b_dir" do
 end
 
 # At the end of a Chef run containing this recipe, /tmp/foo should contain
-# subdirectories "a_dir" and "b_dir". Subdirectory "c_dir" should have been
+# subdirectories "a_dir", "b_dir", and "d_dir". Subdirectory "c_dir" should have been
 # removed.

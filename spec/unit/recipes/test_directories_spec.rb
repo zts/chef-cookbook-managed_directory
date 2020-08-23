@@ -24,7 +24,8 @@ describe 'test-managed_directory::test_directories' do
         '/tmp/bar/a',
         '/tmp/bar/a_dir',
         '/tmp/bar/b_dir',
-        '/tmp/bar/c_dir'
+        '/tmp/bar/c_dir',
+        '/tmp/bar/d_dir',
       ]
       allow(Dir).to receive(:glob).and_call_original
       allow(Dir).to receive(:glob).with('/tmp/bar/*').and_return(testdir_contents)
@@ -32,6 +33,7 @@ describe 'test-managed_directory::test_directories' do
       allow(File).to receive(:directory?).with('/tmp/bar/a_dir').and_return(true)
       allow(File).to receive(:directory?).with('/tmp/bar/b_dir').and_return(true)
       allow(File).to receive(:directory?).with('/tmp/bar/c_dir').and_return(true)
+      allow(File).to receive(:directory?).with('/tmp/bar/d_dir').and_return(true)
     end
 
     it 'should clean managed_directory /tmp/bar' do
@@ -57,6 +59,10 @@ describe 'test-managed_directory::test_directories' do
 
     it 'should remove directory c_dir' do
       expect(chef_run).to delete_directory('/tmp/bar/c_dir')
+    end
+
+    it 'should not remove directory d_dir' do
+      expect(chef_run).to_not delete_directory('/tmp/bar/d_dir')
     end
   end
 end

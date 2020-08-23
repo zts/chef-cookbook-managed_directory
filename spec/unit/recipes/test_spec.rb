@@ -26,7 +26,9 @@ describe 'test-managed_directory::test' do
         '/tmp/foo/b',
         '/tmp/foo/b_link',
         '/tmp/foo/c',
-        '/tmp/foo/c_dir'
+        '/tmp/foo/c_dir',
+        '/tmp/foo/d',
+        '/tmp/foo/e',
       ]
       allow(Dir).to receive(:glob).and_call_original
       allow(Dir).to receive(:glob).with('/tmp/foo/*').and_return(testdir_contents)
@@ -37,6 +39,8 @@ describe 'test-managed_directory::test' do
       allow(File).to receive(:symlink?).with('/tmp/foo/b_link').and_return(true)
       allow(File).to receive(:file?).and_call_original
       allow(File).to receive(:file?).with('/tmp/foo/c').and_return(true)
+      allow(File).to receive(:file?).with('/tmp/foo/d').and_return(true)
+      allow(File).to receive(:file?).with('/tmp/foo/e').and_return(true)
     end
 
     it 'should clean managed_directory' do
@@ -61,6 +65,14 @@ describe 'test-managed_directory::test' do
 
     it 'should remove file c' do
       expect(chef_run).to delete_file('/tmp/foo/c')
+    end
+
+    it 'should not remove file d' do
+      expect(chef_run).to_not delete_file('/tmp/foo/d')
+    end
+
+    it 'should not remove file e' do
+      expect(chef_run).to_not delete_file('/tmp/foo/e')
     end
 
     # It shouldn't remove c_dir because in this test we haven't told
