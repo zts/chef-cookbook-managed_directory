@@ -1,7 +1,6 @@
 ---
 driver:
   name: dokken
-  chef_version: 14
 
 provisioner:
   name: dokken
@@ -13,12 +12,18 @@ verifier:
   root_path: '/opt/verifier'
 
 platforms:
-  - name: centos-6
-    driver:
-      image: dokken/centos-6
-  - name: centos-7
+  - name: chef-14
     driver:
       image: dokken/centos-7
+      chef_version: 14
+  - name: chef-15
+    driver:
+      image: dokken/centos-7
+      chef_version: 15
+  - name: chef-latest
+    driver:
+      image: dokken/centos-7
+      chef_version: latest
 
 suites:
   - name: default

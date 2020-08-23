@@ -1,4 +1,5 @@
 resource_name :test_object
+provides :test_object
 
 # Implement a single action, and make that the default.
 default_action :create

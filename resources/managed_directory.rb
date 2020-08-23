@@ -19,6 +19,7 @@
 #
 
 resource_name :managed_directory
+provides :managed_directory
 
 # Implement a single action, and make that the default.
 default_action :clean
