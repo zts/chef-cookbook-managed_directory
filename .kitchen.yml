@@ -10,7 +10,7 @@ transport:
   name: dokken
 
 verifier:
-  name: inspec
+  root_path: '/opt/verifier'
 
 platforms:
   - name: centos-6
