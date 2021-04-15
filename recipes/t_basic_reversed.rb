@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: managed_directory
+# Cookbook:: managed_directory
 # Recipe:: t_basic_reversed
 #
 # used by chefspec
