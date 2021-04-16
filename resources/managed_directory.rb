@@ -1,9 +1,9 @@
 #
-# Cookbook Name:: managed_directory
+# Cookbook:: managed_directory
 # Resource:: managed_directory
 #
-# Copyright 2012, Zachary Stevens (original LWRP)
-# Copyright 2017, Heig Gregorian (custom resource)
+# Copyright:: 2012, Zachary Stevens (original LWRP)
+# Copyright:: 2017, Heig Gregorian (custom resource)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 #
 
 resource_name :managed_directory
+provides :managed_directory
 
 # Implement a single action, and make that the default.
 default_action :clean
@@ -27,13 +28,13 @@ default_action :clean
 property :path, String, name_property: true
 
 # Should we clean files out of our managed directory? Default, yes
-property :clean_files, [TrueClass, FalseClass], required: false, default: true
+property :clean_files, [true, false], required: false, default: true
 
 # Should we clean links out of our managed directory? Default, yes
-property :clean_links, [TrueClass, FalseClass], required: false, default: true
+property :clean_links, [true, false], required: false, default: true
 
 # Should we clean subdirectories out of our managed directory? Default, no
-property :clean_directories, [TrueClass, FalseClass], required: false, default: false
+property :clean_directories, [true, false], required: false, default: false
 
 action :clean do
   # get the contents of the managed_directory on disk

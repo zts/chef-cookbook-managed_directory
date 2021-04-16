@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: managed_directory
+# Cookbook:: managed_directory
 # Recipe:: test
 #
 # A simple demonstration of managed_directory, also used by chefspec.

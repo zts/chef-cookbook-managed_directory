@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: managed_directory
+# Cookbook:: managed_directory
 # Recipe:: t_resource_name_symbol
 #
 # used by chefspec

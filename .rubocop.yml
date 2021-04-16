@@ -1,10 +1,10 @@
-AlignParameters:
+Chef/Modernize/DefinesChefSpecMatchers:
   Enabled: false
 ClassAndModuleChildren:
   Enabled: false
 Encoding:
   Enabled: false
-Style/SpaceBeforeFirstArg:
+Layout/ParameterAlignment:
   Enabled: false
 LineLength:
   Max: 200
