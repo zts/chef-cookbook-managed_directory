@@ -3,6 +3,11 @@ MANAGED_DIRECTORY CHANGELOG
 
 This file is used to list changes made in each version of the managed_directory cookbook.
 
+v0.3.2
+------
+- Cookstyle updates
+- Chef 16 compatible
+
 v0.3.1
 ------
 - Fixed bug where a resource's 'identity' method returns a non-`String`
