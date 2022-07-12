@@ -1,3 +1,5 @@
+Chef/Deprecations/FoodcriticFile:
+  Enabled: false
 Chef/Modernize/DefinesChefSpecMatchers:
   Enabled: false
 ClassAndModuleChildren:
