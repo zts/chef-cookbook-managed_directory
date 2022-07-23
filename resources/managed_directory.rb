@@ -20,6 +20,7 @@
 
 resource_name :managed_directory
 provides :managed_directory
+unified_mode true if respond_to?(:unified_mode)
 
 # Implement a single action, and make that the default.
 default_action :clean
